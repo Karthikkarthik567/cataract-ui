@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📄 Report Details - Cataract Detection</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e8faff, #fafff5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px 35px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      width: 480px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0077aa;
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin: 10px 0;
+    }
+
+    strong { color: #004c91; }
+
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      background: linear-gradient(90deg, #0099cc, #00b4db);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #00b4db, #0099cc);
+    }
+
+    .btn-secondary {
+      background: #888;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h2>📋 Report Details</h2>
+
+    <p><strong>User:</strong> {{ detection.user.username }}</p>
+    <p><strong>Email:</strong> {{ detection.user.email }}</p>
+    <p><strong>Report ID:</strong> {{ detection.report_id }}</p>
+
+    {% if detection.result == 'cataract' %}
+      <p><strong>Result:</strong> <span style="color:red;">Cataract</span></p>
+    {% else %}
+      <p><strong>Result:</strong> <span style="color:green;">Normal</span></p>
+    {% endif %}
+
+    <p><strong>Confidence:</strong> {{ (detection.confidence * 100)|round(2) }}%</p>
+    <p><strong>Date:</strong> {{ detection.timestamp.strftime('%Y-%m-%d %H:%M') }}</p>
+
+    <!-- Embedded PDF preview (if file exists) -->
+    {% set pdf_file = 'report_' + detection.report_id + '.pdf' %}
+    <iframe src="{{ url_for('pdfs_file', fname=pdf_file) }}"></iframe>
+
+    <!-- Download button -->
+    <a href="{{ url_for('pdfs_file', fname='report_' + detection.report_id + '.pdf') }}"
+       class="btn" target="_blank">⬇ Download PDF</a>
+
+    <!-- Back button logic -->
+    {% if current_user.is_admin %}
+      <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">← Back to Admin Dashboard</a>
+    {% else %}
+      <a href="{{ url_for('history') }}" class="btn btn-secondary">← Back to History</a>
+    {% endif %}
+  </div>
+</body>
+</html>

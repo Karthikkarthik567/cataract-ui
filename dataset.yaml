@@ -1,0 +1,26 @@
+# Eye/Cataract Detection Dataset Configuration for YOLO
+
+# Dataset paths
+path: Dataset  # Root directory
+train: train/images  # Train images (relative to 'path')
+val: val/images      # Validation images (relative to 'path') 
+test: test/images    # Test images (relative to 'path')
+
+# Number of classes
+nc: 2
+
+# Class names
+names:
+  0: normal
+  1: cataract
+
+# Additional metadata
+download: False
+
+# Dataset information
+info: |
+  Eye/Cataract Detection Dataset
+  - Contains images of eyes with normal and cataract conditions
+  - YOLO format annotations (class_id center_x center_y width height)
+  - Normalized coordinates (0-1)
+  - Suitable for object detection and classification tasks 

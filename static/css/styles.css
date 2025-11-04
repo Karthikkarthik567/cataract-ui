@@ -1,0 +1,413 @@
+/* 🌙 General Layout */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0b0e16, #1a1f2b);
+  color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html, body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* 🔝 Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, #0099cc, #00b4db);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 12px 12px;
+}
+
+.navbar h2 {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+  color: #e0ffff;
+}
+/* ✅ Dropzone — perfectly centered & smaller */
+.dropzone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  max-width: 260px;
+  margin: 0 auto 25px auto; /* centered + spacing below */
+  padding: 25px;
+  border: 2px dashed #0099cc;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.96);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 153, 204, 0.2);
+}
+
+.dropzone:hover {
+  background-color: #e6f9ff;
+  transform: scale(1.03);
+  box-shadow: 0 0 14px rgba(0, 153, 204, 0.4);
+}
+
+.dropzone p {
+  color: #004c91;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+/* ✅ Button — neatly spaced and aligned */
+.btn {
+  display: block;
+  width: 80%;
+  max-width: 260px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #00b4db, #0099cc);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 4px 10px rgba(0, 153, 204, 0.3);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 153, 204, 0.4);
+}
+
+
+/* 🧱 Card Containers */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 2rem;
+}
+
+/* ---------- Upload Section ---------- */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.8s ease;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
+}
+
+.card h1 {
+  color: #00e5ff;
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  color: #d0f0ff;
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+/* 🧠 Buttons */
+.btn {
+  margin-top: 1.8rem;
+  background: linear-gradient(90deg, #00e5ff, #008cff);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px #00e5ff;
+}
+
+/* 📊 History & Admin Tables */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.history-table th,
+.history-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-table th {
+  background-color: rgba(0, 229, 255, 0.1);
+  color: #00e5ff;
+}
+
+/* 🧩 Result Image Grid */
+.image-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.image-grid img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  border: 2px solid #00e5ff;
+  animation: fadeIn 0.6s ease;
+}
+.image-grid h3 {
+  color: #004c91 !important;   /* dark blue - clearly visible */
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.6);  /* adds contrast */
+  margin-bottom: 10px;
+}
+
+/* 🩺 Improve text visibility for info section */
+.info-box {
+  background: rgba(255, 255, 255, 0.98); /* almost white for contrast */
+  color: #222; /* darker text */
+  border-left: 6px solid #0099cc; /* accent color */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.info-box h3 {
+  color: #004c91;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.info-box ul li,
+.info-box p {
+  color: #333 !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.info-box strong {
+  color: #000;
+}
+
+/* 🧾 Auth Pages */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.auth-card h2 {
+  color: #00e5ff;
+  margin-bottom: 1rem;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.auth-card input:focus {
+  box-shadow: 0 0 8px #00e5ff;
+}
+
+/* 🌟 Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #bbb;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ✨ Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .dropzone {
+    padding: 2rem 1rem;
+    min-height: 130px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+}
+/* 🩺 Detection Report Page Styling Fix */
+.report-container {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  color: #222;
+  text-align: center;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.report-container h1 {
+  color: #004c91;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.report-container .info {
+  color: #333;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+/* 🩺 Highlight prediction colors */
+.result-positive {
+  color: #e74c3c;  /* red for cataract */
+  font-weight: 600;
+}
+
+.result-normal {
+  color: #2ecc71;  /* green for normal */
+  font-weight: 600;
+}
+
+/* 📘 Summary box for detected info */
+.summary-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 6px solid #004c91;
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem auto;
+  text-align: left;
+  color: #222;
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.alert {
+  margin: 15px 0;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+.alert.success { background-color: #4CAF50; color: white; }
+.alert.warning { background-color: #ff9800; color: white; }
+.alert.danger { background-color: #f44336; color: white; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Better visibility for warning/symptom texts */
+.summary-box h3 {
+  color: #004c91;
+  margin-bottom: 0.8rem;
+}
+
+.summary-box ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.summary-box li {
+  margin-bottom: 0.5rem;
+}
+
+/* ✅ PDF Button improvement */
+.download-btn {
+  background: linear-gradient(90deg, #00b4db, #0099cc);
+  color: #fff;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: linear-gradient(90deg, #0099cc, #0077b6);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00e5ff;
+}

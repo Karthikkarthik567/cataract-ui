@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ℹ️ About - Cataract Detection System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #002b5b;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, #e6f8ff, #a2d9ff, #d0f0ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      perspective: 1200px;
+    }
+
+    /* Background animation */
+    .bg-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 120%;
+      height: 120%;
+      overflow: hidden;
+      z-index: -5;
+      background: radial-gradient(circle at 30% 50%, rgba(0, 153, 255, 0.35), transparent 70%),
+                  radial-gradient(circle at 70% 40%, rgba(0, 255, 255, 0.25), transparent 70%),
+                  radial-gradient(circle at 50% 80%, rgba(0, 180, 255, 0.25), transparent 80%);
+      animation: waveMotion 20s infinite linear;
+      filter: blur(60px);
+    }
+
+    @keyframes waveMotion {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      from { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      to { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+      z-index: 5;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #002b5b;
+      text-shadow: 1px 2px 8px rgba(0,0,0,0.15);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #002b5b;
+      margin: 0 25px;
+      font-size: 1.05rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -6px;
+      background-color: #007bff;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color: #007bff; transform: translateY(-2px); }
+
+    /* Content */
+    .content-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 120px;
+      z-index: 2;
+    }
+
+    .content-box {
+      max-width: 800px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      padding: 60px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: floatUp 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-10px); }
+    }
+
+    .content-box:hover {
+      transform: translateZ(40px) rotateY(5deg) rotateX(2deg);
+      box-shadow: 0 25px 55px rgba(0,0,0,0.25);
+    }
+
+    .content-box h1 {
+      font-size: 2.4rem;
+      color: #002b5b;
+      margin-bottom: 20px;
+    }
+
+    .content-box p {
+      font-size: 1.1rem;
+      color: #013a63;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .key-points {
+      text-align: left;
+      margin-top: 15px;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .key-points h2 {
+      font-size: 1.5rem;
+      color: #002b5b;
+      margin-bottom: 10px;
+    }
+
+    .key-points li {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      list-style: none;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .key-points li::before {
+      content: "✔️";
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #003366;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-layer"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const particleCount = 25;
+      for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement("div");
+        p.classList.add("particle");
+        const size = Math.random() * 6 + 4;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.left = `${Math.random() * 100}%`;
+        p.style.animationDuration = `${6 + Math.random() * 8}s`;
+        p.style.animationDelay = `${Math.random() * 5}s`;
+        document.body.appendChild(p);
+      }
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      document.querySelector(".content-box").style.transform =
+        `rotateY(${x}deg) rotateX(${-y}deg) translateZ(20px)`;
+    });
+  </script>
+
+  <header>
+    <div class="logo">👁️ AI-Powered Cataract Detection</div>
+    <nav>
+      <a href="{{ url_for('home_page') }}">Home</a>
+      <a href="{{ url_for('about') }}">About</a>
+      <a href="{{ url_for('contact') }}">Contact</a>
+      <a href="{{ url_for('login') }}">Login</a>
+    </nav>
+  </header>
+
+  <div class="content-container">
+    <div class="content-box">
+      <h1>About AI-Powered Cataract Detection</h1>
+      <p>
+        Our system leverages cutting-edge <strong>Artificial Intelligence</strong> and medical imaging  
+        to assist in early and accurate cataract diagnosis. Using deep learning,  
+        we help healthcare professionals detect cataracts faster and more reliably.
+      </p>
+
+      <div class="key-points">
+        <h2>🔍 Why YOLO for Cataract Detection?</h2>
+        <ul>
+          <li>Utilizes YOLO — a real-time, state-of-the-art object detection model.</li>
+          <li>Delivers faster and more precise detection than traditional CNNs.</li>
+          <li>Processes high-resolution eye images with minimal delay.</li>
+          <li>Enables early-stage cataract detection to improve patient outcomes.</li>
+        </ul>
+      </div>
+
+      <p>
+        This project showcases how modern vision AI can empower the medical field  
+        and enhance global healthcare accessibility.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Cataract Detection AI • Powered by YOLO Vision & Deep Learning
+  </footer>
+</body>
+</html>

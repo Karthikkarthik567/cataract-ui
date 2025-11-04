@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🔬 Detection Report - Cataract Detection AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #a2d9ff, #dff6ff, #a7ffeb);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 40px;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+      padding: 40px 30px;
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 0.7s ease;
+    }
+
+    .card h1 {
+      color: #004c91;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .result-summary {
+      margin-top: 10px;
+      font-size: 17px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .positive {
+      color: #e74c3c;
+      font-weight: 700;
+    }
+
+    .normal {
+      color: #2ecc71;
+      font-weight: 700;
+    }
+
+    .image-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+      transition: 0.3s;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 15px 10px;
+      background: linear-gradient(90deg, #0099cc, #00b4db);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 153, 204, 0.3);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 153, 204, 0.4);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 10px 0;
+      background: linear-gradient(90deg, #a2d9ff, #a7ffeb);
+      color: #004c91;
+      font-weight: 500;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .info-box {
+      margin-top: 20px;
+      background: #f5fcff;
+      border-radius: 10px;
+      padding: 15px 20px;
+      text-align: left;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      line-height: 1.6;
+    }
+
+    .info-box h3 {
+      margin: 0 0 8px 0;
+      color: #004c91;
+    }
+
+    .info-box ul {
+      margin: 5px 0 0 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .card {
+        padding: 25px 20px;
+      }
+
+      .image-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Detection Report</h1>
+
+      <div class="result-summary">
+        <p><strong>Report ID:</strong> {{ report_id }}</p>
+        <p>
+          <strong>Prediction:</strong>
+          <span class="{{ 'positive' if label == 'cataract' else 'normal' }}">{{ label|capitalize }}</span>
+        </p>
+        <p><strong>Confidence:</strong> {{ (confidence * 100)|round(2) }}%</p>
+      </div>
+
+      <div class="image-grid">
+        <div>
+          <h3>📥 Uploaded Image</h3>
+          <img src="{{ uploaded_url }}" alt="Uploaded Eye Image">
+        </div>
+        <div>
+          <h3>🧠 AI Annotated Output</h3>
+          <img src="{{ annotated_url }}" alt="Annotated Eye Image">
+        </div>
+      </div>
+
+      <!-- Smart info box -->
+      {% if label == 'cataract' %}
+      <div class="info-box">
+        <h3>⚠️ Cataract Detected — Possible Symptoms</h3>
+        <ul>
+          <li>Blurred or cloudy vision</li>
+          <li>Difficulty seeing at night</li>
+          <li>Sensitivity to bright lights or glare</li>
+          <li>Colors appearing faded or yellowed</li>
+        </ul>
+        <p><strong>Recommendation:</strong> Please consult an ophthalmologist for a detailed eye examination as soon as possible.</p>
+      </div>
+      {% else %}
+      <div class="info-box">
+        <h3>✅ Normal Eye Detected — Preventive Care</h3>
+        <p>Your eyes appear healthy based on the uploaded image. To maintain good eye health:</p>
+        <ul>
+          <li>Get a full eye examination once every 12 months.</li>
+          <li>Protect your eyes from UV light by wearing sunglasses outdoors.</li>
+          <li>Eat foods rich in Vitamin A and Omega-3 fatty acids.</li>
+          <li>Reduce prolonged screen exposure and take regular breaks.</li>
+        </ul>
+      </div>
+      {% endif %}
+
+      <!-- PDF + Back buttons -->
+      {% if pdf_url and pdf_url != "#" %}
+      <a href="{{ pdf_url }}" class="btn" target="_blank" download>📄 Download PDF Report</a>
+      {% endif %}
+      <a href="{{ url_for('index') }}" class="btn">⬅ Back to Dashboard</a>
+    </div>
+  </div>
+
+  <footer>© 2025 Cataract Detection AI | Powered by Flask + YOLOv8</footer>
+</body>
+</html>
