@@ -83,46 +83,7 @@ To make the app **professional and interactive**:
 
 * **Loading spinner** while processing:
 
-```css
-.spinner {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #4f46e5; /* purple */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
-}
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-```
-
-* **Fade-in annotated images**:
-
-```css
-img.detected {
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-```
-
-* **Button hover effect**:
-
-```css
-button:hover {
-  transform: scale(1.05);
-  transition: all 0.3s ease;
-  background-color: #6366f1; /* Tailwind purple */
-  color: white;
-}
-```
 
 
 ## **Tech Stack**
